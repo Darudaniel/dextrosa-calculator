@@ -16,8 +16,12 @@
     <form action="/my-handling-form-page" method="POST">
       <ul>
         <li>
-          <label for="peso">Peso del paciente</label>
+          <label for="peso">Peso del paciente (kg)</label>
           <input type="text" id="peso" name="user_peso">
+        </li>        
+        <li>
+          <label for="dias">Dias de vida</label>
+          <input type="text" id="dias" name="user_dias">
         </li>        
         <li>
           <button type="button" id="botonCalcular">Calcular</button>
@@ -34,6 +38,9 @@
       </li>
       <li>
         <label id="resultado50"></label>
+      </li>      
+      <li>
+        <label id="liquidosNecesarios"></label>
       </li>      
     </form>
     <!-- <label id="resultadico"></label> -->

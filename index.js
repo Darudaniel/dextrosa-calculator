@@ -7,6 +7,33 @@ const mgDextrosaAl30 = 30000
 const mgDextrosaAl50 = 50000
 const cien = 100
 
+const cantidadDeLiquidos = (dias) => {
+  switch(dias) {
+    case 1:
+      return peso * 70      
+      break
+    case 2:
+      return peso * 80
+      break
+    case 3:
+      // return peso * 100
+      console.log('soy 1')
+      break
+    case 4:
+      return peso * 125
+      break
+    case 5:
+      return peso * 140
+      break
+    default:
+      console.log('el campo esta vacio')
+      break
+  }    
+}
+
+const pruebaswitch = cantidadDeLiquidos(3)
+console.log(pruebaswitch)
+
 const botonCalcular =  document.getElementById('botonCalcular')
 
 const initializer = () => {
@@ -18,6 +45,12 @@ const initializer = () => {
     let cantidadDextrosaAl30Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl30
     let cantidadDextrosaAl50Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl50
     
+    let diasDeNacido = document.getElementById("dias").value
+    // let liquidosApropiados = cantidadDeLiquidos(dias)
+    const objetivoLiquidos = document.getElementById('liquidosNecesarios')
+    objetivoLiquidos.innerHTML = cantidadDeLiquidos(diasDeNacido)
+    console.log(diasDeNacido)
+
 
     const objetivo5 = document.getElementById('resultado5')
     objetivo5.innerHTML = `Dextrosa al 5 en cc :----- ${cantidadDextrosaAl5Porciento} CC`
@@ -27,7 +60,6 @@ const initializer = () => {
     objetivo30.innerHTML = `Dextrosa al 30 en cc :----- ${cantidadDextrosaAl30Porciento} CC`
     const objetivo50 = document.getElementById('resultado50')
     objetivo50.innerHTML = `Dextrosa al 50 en cc :----- ${cantidadDextrosaAl50Porciento} CC`
-    console.log(cantidadDextrosaAl10Porciento)
   }  
 }
 
