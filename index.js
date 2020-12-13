@@ -11,11 +11,12 @@ const botonCalcular =  document.getElementById('botonCalcular')
 
 let dextrosaSeleccionada
 let dextrosaSeleccionadaEnCc
+let dextrosaNecesaria
 
 const initializer = () => {
   botonCalcular.onclick = () => {
     let peso = document.getElementById("peso").value
-    let dextrosaNecesaria = FM_IDEAL * MINUTOS_DIA * peso
+    dextrosaNecesaria = FM_IDEAL * MINUTOS_DIA * peso
     let cantidadDextrosaAl5Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl5
     let cantidadDextrosaAl10Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl10
     let cantidadDextrosaAl30Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl30
@@ -81,12 +82,25 @@ const initializer = () => {
 
     const objetivoDextrosaAdecuada = document.getElementById('dextrosaAdecuada')
     objetivoDextrosaAdecuada.innerHTML = `Debes usar ${dextrosaSeleccionada}`
-    
-    let porcentajeDeDextrosa = 
+    console.log(cantidadDeLiquidos(diasDeNacido))
+    console.log(dextrosaNecesaria)
+    console.log(cien)
+    let porcentajeDeDextrosa = ((dextrosaNecesaria / 1000) * cien) / cantidadDeLiquidos(diasDeNacido)
 
     const objetivoConcentracion = document.getElementById('concentracion')
-    objetivoConcentracion.innerHTML = `La solución tendra una concentracion de ${porcentajeDeDextrosa}% dextrosa`
+    objetivoConcentracion.innerHTML = `La solución tendra una concentracion de ${porcentajeDeDextrosa.toFixed(2)}% dextrosa`
     
+    let usoCateter
+    let validacionCateter = () => {
+      if(porcentajeDeDextrosa > 12.5) {
+        usoCateter = "Debido a la concentracion debe utilizarse cateter central"
+      } else {
+        usoCateter = "No necesita cateter central"
+      }
+    }
+    validacionCateter()
+    const objetivoCateter = document.getElementById('cateterCentral')
+    objetivoCateter.innerHTML = usoCateter
   }  
 }
 
