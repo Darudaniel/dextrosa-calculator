@@ -7,25 +7,18 @@ const mgDextrosaAl30 = 30000
 const mgDextrosaAl50 = 50000
 const cien = 100
 
-// const peso = parseFloat(prompt("Iingrese peso del niño"))
-const peso = document.getElementById('peso').value
 const botonCalcular =  document.getElementById('botonCalcular')
-const dextrosaNecesaria = FM_IDEAL * MINUTOS_DIA * peso
 
-let cantidadDextrosaAl5Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl5
-let cantidadDextrosaAl10Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl10
-let cantidadDextrosaAl30Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl30
-let cantidadDextrosaAl50Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl50
-
-// const imprimirResultados = () => {
-//   console.log(cantidadDextrosaAl5Porciento)
-//   console.log(cantidadDextrosaAl10Porciento)
-//   console.log(cantidadDextrosaAl30Porciento)
-//   console.log(cantidadDextrosaAl50Porciento)
-// }
-
-const imprimirResultados = () => {
+const initializer = () => {
   botonCalcular.onclick = () => {
+    let peso = document.getElementById("peso").value
+    let dextrosaNecesaria = FM_IDEAL * MINUTOS_DIA * peso
+    let cantidadDextrosaAl5Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl5
+    let cantidadDextrosaAl10Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl10
+    let cantidadDextrosaAl30Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl30
+    let cantidadDextrosaAl50Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl50
+    
+
     const objetivo5 = document.getElementById('resultado5')
     objetivo5.innerHTML = `Dextrosa al 5 en cc :----- ${cantidadDextrosaAl5Porciento} CC`
     const objetivo10 = document.getElementById('resultado10')
@@ -34,9 +27,10 @@ const imprimirResultados = () => {
     objetivo30.innerHTML = `Dextrosa al 30 en cc :----- ${cantidadDextrosaAl30Porciento} CC`
     const objetivo50 = document.getElementById('resultado50')
     objetivo50.innerHTML = `Dextrosa al 50 en cc :----- ${cantidadDextrosaAl50Porciento} CC`
+    console.log(cantidadDextrosaAl10Porciento)
   }  
 }
 
-imprimirResultados()
+initializer()
 
 
