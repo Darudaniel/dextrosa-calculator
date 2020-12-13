@@ -7,34 +7,10 @@ const mgDextrosaAl30 = 30000
 const mgDextrosaAl50 = 50000
 const cien = 100
 
-const cantidadDeLiquidos = (dias) => {
-  switch(dias) {
-    case 1:
-      return peso * 70      
-      break
-    case 2:
-      return peso * 80
-      break
-    case 3:
-      // return peso * 100
-      console.log('soy 1')
-      break
-    case 4:
-      return peso * 125
-      break
-    case 5:
-      return peso * 140
-      break
-    default:
-      console.log('el campo esta vacio')
-      break
-  }    
-}
-
-const pruebaswitch = cantidadDeLiquidos(3)
-console.log(pruebaswitch)
-
 const botonCalcular =  document.getElementById('botonCalcular')
+
+let dextrosaSeleccionada
+let dextrosaSeleccionadaEnCc
 
 const initializer = () => {
   botonCalcular.onclick = () => {
@@ -46,11 +22,30 @@ const initializer = () => {
     let cantidadDextrosaAl50Porciento = (dextrosaNecesaria * cien) / mgDextrosaAl50
     
     let diasDeNacido = document.getElementById("dias").value
-    // let liquidosApropiados = cantidadDeLiquidos(dias)
-    const objetivoLiquidos = document.getElementById('liquidosNecesarios')
-    objetivoLiquidos.innerHTML = cantidadDeLiquidos(diasDeNacido)
-    console.log(diasDeNacido)
-
+    
+    let cantidadDeLiquidos = (dias) => {
+      // let diasArgument = dias
+      switch(parseInt(dias)) {
+        case 1:
+          return peso * 70      
+          break
+        case 2:
+          return peso * 80
+          break
+        case 3:
+          return peso * 100
+          break
+        case 4:
+          return peso * 125
+          break
+        case 5:
+          return peso * 140
+          break
+        default:
+          console.log('el campo esta vacio')
+          break
+      }    
+    }
 
     const objetivo5 = document.getElementById('resultado5')
     objetivo5.innerHTML = `Dextrosa al 5 en cc :----- ${cantidadDextrosaAl5Porciento} CC`
@@ -60,6 +55,38 @@ const initializer = () => {
     objetivo30.innerHTML = `Dextrosa al 30 en cc :----- ${cantidadDextrosaAl30Porciento} CC`
     const objetivo50 = document.getElementById('resultado50')
     objetivo50.innerHTML = `Dextrosa al 50 en cc :----- ${cantidadDextrosaAl50Porciento} CC`
+
+    const objetivoLiquidos = document.getElementById('liquidosNecesarios')
+    objetivoLiquidos.innerHTML = `Administrar ${cantidadDeLiquidos(diasDeNacido)} CC de liquidos en total`
+    
+    let seleccionarDextrosa = (dex) => {
+      if(dex > cantidadDextrosaAl5Porciento) {
+        dextrosaSeleccionada = "Dextrosa al 5%"
+        dextrosaSeleccionadaEnCc = cantidadDextrosaAl5Porciento
+      } else if(dex > cantidadDextrosaAl10Porciento) {
+        dextrosaSeleccionada = "Dextrosa al 10%"
+        dextrosaSeleccionadaEnCc = cantidadDextrosaAl10Porciento
+      } else if(dex > cantidadDextrosaAl30Porciento) {
+        dextrosaSeleccionada = "Dextrosa al 30%"
+        dextrosaSeleccionadaEnCc = cantidadDextrosaAl30Porciento
+      } else if(dex > cantidadDextrosaAl50Porciento) {
+        dextrosaSeleccionada = "Dextrosa al 50%"
+        dextrosaSeleccionadaEnCc = cantidadDextrosaAl50Porciento
+      } else {
+        console.log('no se pudo seleccionar una dextrosa')
+      }
+    }
+
+    seleccionarDextrosa(cantidadDeLiquidos(diasDeNacido))
+
+    const objetivoDextrosaAdecuada = document.getElementById('dextrosaAdecuada')
+    objetivoDextrosaAdecuada.innerHTML = `Debes usar ${dextrosaSeleccionada}`
+    
+    let porcentajeDeDextrosa = 
+
+    const objetivoConcentracion = document.getElementById('concentracion')
+    objetivoConcentracion.innerHTML = `La solución tendra una concentracion de ${porcentajeDeDextrosa}% dextrosa`
+    
   }  
 }
 
