@@ -54,13 +54,13 @@ const initializer = () => {
     }
 
     const objetivo5 = document.getElementById('resultado5')
-    objetivo5.innerHTML = `-Dextrosa al 5 en cc :---${cantidadDextrosaAl5Porciento} CC`
+    objetivo5.innerHTML = `-Dextrosa al 5 en cc :---${cantidadDextrosaAl5Porciento.toFixed(1)} CC`
     const objetivo10 = document.getElementById('resultado10')
-    objetivo10.innerHTML = `-Dextrosa al 10 en cc :---${cantidadDextrosaAl10Porciento} CC`
+    objetivo10.innerHTML = `-Dextrosa al 10 en cc :---${cantidadDextrosaAl10Porciento.toFixed(1)} CC`
     const objetivo30 = document.getElementById('resultado30')
-    objetivo30.innerHTML = `-Dextrosa al 30 en cc :---${cantidadDextrosaAl30Porciento} CC`
+    objetivo30.innerHTML = `-Dextrosa al 30 en cc :---${cantidadDextrosaAl30Porciento.toFixed(1)} CC`
     const objetivo50 = document.getElementById('resultado50')
-    objetivo50.innerHTML = `-Dextrosa al 50 en cc :---${cantidadDextrosaAl50Porciento} CC`
+    objetivo50.innerHTML = `-Dextrosa al 50 en cc :---${cantidadDextrosaAl50Porciento.toFixed(1)} CC`
 
     
     
@@ -90,7 +90,7 @@ const initializer = () => {
       resultadoResta = cantidadDeLiquidos(diasDeNacido) - dextrosaSeleccionadaEnCc
     }
     restar()
-    objetivoLiquidos.innerHTML = `-Administrar ${dextrosaSeleccionadaEnCc} CC de ${dextrosaSeleccionada}<br> y agregar ${resultadoResta.toFixed(1)} CC de solucion salina.`
+    objetivoLiquidos.innerHTML = `-Administrar ${dextrosaSeleccionadaEnCc.toFixed(1)} CC de ${dextrosaSeleccionada}<br> y agregar ${resultadoResta.toFixed(1)} CC de solucion salina.`
 
     // const objetivoDextrosaAdecuada = document.getElementById('dextrosaAdecuada')
     // objetivoDextrosaAdecuada.innerHTML = `-Debes usar ${dextrosaSeleccionada}` 
@@ -116,11 +116,11 @@ const initializer = () => {
     validarElectrolitos()
     const mostrarElectrolitos = () => {
       if(parseFloat(diasDeNacido) >= 3) {
-        electrolitosMostrados = `-Agregar ${natrolEnCc} CC de Natrol <br> y ${katrolEnCC} CC de Katrol`
+        electrolitosMostrados = `-Agregar ${natrolEnCc.toFixed(1)} CC de Natrol <br> y ${katrolEnCC.toFixed(1)} CC de Katrol`
       } else if(parseFloat(diasDeNacido) >= 2) {
-        electrolitosMostrados = `-Agregar ${natrolEnCc} CC de Natrol`
+        electrolitosMostrados = `-Agregar ${natrolEnCc.toFixed(1)} CC de Natrol`
       } else {
-        console.log('error')
+        electrolitosMostrados = `-No se agregan electrolitos`
       }
     }
     mostrarElectrolitos()
