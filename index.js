@@ -12,6 +12,11 @@ const botonCalcular =  document.getElementById('botonCalcular')
 let dextrosaSeleccionada
 let dextrosaSeleccionadaEnCc
 let dextrosaNecesaria
+let resultadoResta
+let natrolEnCc
+let meqNatrol
+let katrolEnCC
+let electrolitosMostrados
 
 const initializer = () => {
   botonCalcular.onclick = () => {
@@ -57,8 +62,7 @@ const initializer = () => {
     const objetivo50 = document.getElementById('resultado50')
     objetivo50.innerHTML = `-Dextrosa al 50 en cc :---${cantidadDextrosaAl50Porciento} CC`
 
-    const objetivoLiquidos = document.getElementById('liquidosNecesarios')
-    objetivoLiquidos.innerHTML = `-Administrar ${cantidadDeLiquidos(diasDeNacido)} CC de liquidos en total`
+    
     
     let seleccionarDextrosa = (dex) => {
       if(dex > cantidadDextrosaAl5Porciento) {
@@ -80,22 +84,57 @@ const initializer = () => {
 
     seleccionarDextrosa(cantidadDeLiquidos(diasDeNacido))
 
-    const objetivoDextrosaAdecuada = document.getElementById('dextrosaAdecuada')
-    objetivoDextrosaAdecuada.innerHTML = `-Debes usar ${dextrosaSeleccionada}`
-    console.log(cantidadDeLiquidos(diasDeNacido))
-    console.log(dextrosaNecesaria)
-    console.log(cien)
+    const objetivoLiquidos = document.getElementById('liquidosNecesarios')
+    // objetivoLiquidos.innerHTML = `-Administrar ${cantidadDeLiquidos(diasDeNacido)} CC de liquidos en total.<br>De los cuales ${dextrosaSeleccionadaEnCc} CC deben ser de ${dextrosaSeleccionada}`
+    const restar = () => {
+      resultadoResta = cantidadDeLiquidos(diasDeNacido) - dextrosaSeleccionadaEnCc
+    }
+    restar()
+    objetivoLiquidos.innerHTML = `-Administrar ${dextrosaSeleccionadaEnCc} CC de ${dextrosaSeleccionada}<br> y agregar ${resultadoResta.toFixed(1)} CC de solucion salina.`
+
+    // const objetivoDextrosaAdecuada = document.getElementById('dextrosaAdecuada')
+    // objetivoDextrosaAdecuada.innerHTML = `-Debes usar ${dextrosaSeleccionada}` 
+
     let porcentajeDeDextrosa = ((dextrosaNecesaria / 1000) * cien) / cantidadDeLiquidos(diasDeNacido)
 
     const objetivoConcentracion = document.getElementById('concentracion')
-    objetivoConcentracion.innerHTML = `-La solución tendra una concentracion de ${porcentajeDeDextrosa.toFixed(2)}% dextrosa`
+    objetivoConcentracion.innerHTML = `(La solución tendra una concentracion de ${porcentajeDeDextrosa.toFixed(1)}% dextrosa)`
+
+
+    const validarElectrolitos = () => {
+      if(parseFloat(diasDeNacido) >= 3) {
+        meqNatrol = peso * 3
+        natrolEnCc = (meqNatrol * 10) / 20
+        katrolEnCC = natrolEnCc / 2
+      } else if(parseFloat(diasDeNacido) >= 2){
+        meqNatrol = peso * 3
+        natrolEnCc = (meqNatrol * 10) / 20
+      } else {
+        console.log('no se deben agregar electrolitos')
+      }
+    }
+    validarElectrolitos()
+    const mostrarElectrolitos = () => {
+      if(parseFloat(diasDeNacido) >= 3) {
+        electrolitosMostrados = `-Agregar ${natrolEnCc} CC de Natrol <br> y ${katrolEnCC} CC de Katrol`
+      } else if(parseFloat(diasDeNacido) >= 2) {
+        electrolitosMostrados = `-Agregar ${natrolEnCc} CC de Natrol`
+      } else {
+        console.log('error')
+      }
+    }
+    mostrarElectrolitos()
+
+    const objetivoElectrolitos = document.getElementById('electrolitos')
+    // objetivoElectrolitos.innerHTML = `Agregar ${natrolEnCc} cc de natrol y ${katrolEnCC} cc de katrol`
+    objetivoElectrolitos.innerHTML = electrolitosMostrados
     
     let usoCateter
     let validacionCateter = () => {
       if(porcentajeDeDextrosa > 12.5) {
         usoCateter = "Debido a la concentracion debe utilizarse cateter central"
       } else {
-        usoCateter = "No necesita cateter central"
+        usoCateter = "-No necesita cateter central"
       }
     }
     validacionCateter()
