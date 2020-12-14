@@ -6,6 +6,8 @@
   <meta name="description" content="Calcula la cantidad de dextrosa para administrar en un niño">
   <meta name="robots" content="index, follow"> 
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;700;900&display=swap" rel="stylesheet">
   <title>Calculadora de dextrosa en neonatos</title>
 </head>
 <body>
@@ -13,21 +15,24 @@
     <h1>Calculadora de dextrosa en neonatos</h1>
   </header>
   <main>
-    <form action="/my-handling-form-page" method="POST">
-      <ul>
+    <form action="" method="">
+      <ul class="form">
         <li>
-          <label for="peso">Peso del paciente (kg)</label>
-          <input type="text" id="peso" name="user_peso">
+          <label for="peso">Peso del paciente (kg)</label> <br>
+          <input class="inputs" type="text" id="peso" name="user_peso">
         </li>        
         <li>
-          <label for="dias">Dias de vida</label>
-          <input type="text" id="dias" name="user_dias">
+          <label for="dias">Dias de vida</label> <br>
+          <input class="inputs" type="text" id="dias" name="user_dias">
         </li>        
-        <li>
-          <button type="button" id="botonCalcular">Calcular</button>
+        <li class="button-container">
+          <button class="calc-button" type="button" id="botonCalcular">Calcular</button>
         </li>        
       </ul>
-      <ul>
+    </form>
+    <div class="resultados-container">
+      <h4>FORMULA</h4>
+      <ul class="resultados-list">
         <li>
           <label id="liquidosNecesarios"></label>
         </li>      
@@ -41,8 +46,13 @@
           <label id="cateterCentral"></label>
         </li>        
       </ul>
+    </div>
+    <div class="title-container">
       <h3>En caso de querer hacer los calculos manualmente estas son las cantidades de dextrosa en CC que se necesitan segun su concentracion</h3>
-      <ul>
+    </div>
+    <div class="otras-dextrosas-container">
+      <h4>Otras dextrosas</h4>
+      <ul class="resultados-list">
         <li>
           <label id="resultado5"></label>
         </li>        
@@ -56,7 +66,8 @@
           <label id="resultado50"></label>
         </li>      
       </ul>      
-    </form>
+    </div>
+    
   </main>
 </body>
 <script src="./index.js"></script>
