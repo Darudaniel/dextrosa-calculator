@@ -49,16 +49,16 @@ const initializer = () => {
     }
 
     const objetivo5 = document.getElementById('resultado5')
-    objetivo5.innerHTML = `Dextrosa al 5 en cc :----- ${cantidadDextrosaAl5Porciento} CC`
+    objetivo5.innerHTML = `-Dextrosa al 5 en cc :----- ${cantidadDextrosaAl5Porciento} CC`
     const objetivo10 = document.getElementById('resultado10')
-    objetivo10.innerHTML = `Dextrosa al 10 en cc :----- ${cantidadDextrosaAl10Porciento} CC`
+    objetivo10.innerHTML = `-Dextrosa al 10 en cc :----- ${cantidadDextrosaAl10Porciento} CC`
     const objetivo30 = document.getElementById('resultado30')
-    objetivo30.innerHTML = `Dextrosa al 30 en cc :----- ${cantidadDextrosaAl30Porciento} CC`
+    objetivo30.innerHTML = `-Dextrosa al 30 en cc :----- ${cantidadDextrosaAl30Porciento} CC`
     const objetivo50 = document.getElementById('resultado50')
-    objetivo50.innerHTML = `Dextrosa al 50 en cc :----- ${cantidadDextrosaAl50Porciento} CC`
+    objetivo50.innerHTML = `-Dextrosa al 50 en cc :----- ${cantidadDextrosaAl50Porciento} CC`
 
     const objetivoLiquidos = document.getElementById('liquidosNecesarios')
-    objetivoLiquidos.innerHTML = `Administrar ${cantidadDeLiquidos(diasDeNacido)} CC de liquidos en total`
+    objetivoLiquidos.innerHTML = `-Administrar ${cantidadDeLiquidos(diasDeNacido)} CC de liquidos en total`
     
     let seleccionarDextrosa = (dex) => {
       if(dex > cantidadDextrosaAl5Porciento) {
@@ -81,14 +81,14 @@ const initializer = () => {
     seleccionarDextrosa(cantidadDeLiquidos(diasDeNacido))
 
     const objetivoDextrosaAdecuada = document.getElementById('dextrosaAdecuada')
-    objetivoDextrosaAdecuada.innerHTML = `Debes usar ${dextrosaSeleccionada}`
+    objetivoDextrosaAdecuada.innerHTML = `-Debes usar ${dextrosaSeleccionada}`
     console.log(cantidadDeLiquidos(diasDeNacido))
     console.log(dextrosaNecesaria)
     console.log(cien)
     let porcentajeDeDextrosa = ((dextrosaNecesaria / 1000) * cien) / cantidadDeLiquidos(diasDeNacido)
 
     const objetivoConcentracion = document.getElementById('concentracion')
-    objetivoConcentracion.innerHTML = `La solución tendra una concentracion de ${porcentajeDeDextrosa.toFixed(2)}% dextrosa`
+    objetivoConcentracion.innerHTML = `-La solución tendra una concentracion de ${porcentajeDeDextrosa.toFixed(2)}% dextrosa`
     
     let usoCateter
     let validacionCateter = () => {
