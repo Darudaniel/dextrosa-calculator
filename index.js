@@ -49,13 +49,13 @@ const initializer = () => {
     }
 
     const objetivo5 = document.getElementById('resultado5')
-    objetivo5.innerHTML = `-Dextrosa al 5 en cc :----- ${cantidadDextrosaAl5Porciento} CC`
+    objetivo5.innerHTML = `-Dextrosa al 5 en cc :---${cantidadDextrosaAl5Porciento} CC`
     const objetivo10 = document.getElementById('resultado10')
-    objetivo10.innerHTML = `-Dextrosa al 10 en cc :----- ${cantidadDextrosaAl10Porciento} CC`
+    objetivo10.innerHTML = `-Dextrosa al 10 en cc :---${cantidadDextrosaAl10Porciento} CC`
     const objetivo30 = document.getElementById('resultado30')
-    objetivo30.innerHTML = `-Dextrosa al 30 en cc :----- ${cantidadDextrosaAl30Porciento} CC`
+    objetivo30.innerHTML = `-Dextrosa al 30 en cc :---${cantidadDextrosaAl30Porciento} CC`
     const objetivo50 = document.getElementById('resultado50')
-    objetivo50.innerHTML = `-Dextrosa al 50 en cc :----- ${cantidadDextrosaAl50Porciento} CC`
+    objetivo50.innerHTML = `-Dextrosa al 50 en cc :---${cantidadDextrosaAl50Porciento} CC`
 
     const objetivoLiquidos = document.getElementById('liquidosNecesarios')
     objetivoLiquidos.innerHTML = `-Administrar ${cantidadDeLiquidos(diasDeNacido)} CC de liquidos en total`

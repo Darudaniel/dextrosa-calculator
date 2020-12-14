@@ -15,11 +15,14 @@ html {
   --darkest-black: #080808;
 }
 
-header {
+header, footer{
   display: flex;
   justify-content: center;
   padding: 50px;
   text-align: center;
+}
+footer {
+  padding: 15px;
 }
 main {
   display: flex;
@@ -76,7 +79,7 @@ main {
   list-style: none;
 }
 .resultados-list li {
-  margin: 5px 0;
+  margin: 10px 0;
 }
 .otras-dextrosas-container {
   background-color: var(--high-grey);
