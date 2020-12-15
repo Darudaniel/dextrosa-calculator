@@ -82,10 +82,7 @@ const initializer = () => {
     cantidadDextrosaAl50Porciento = (dextrosaNecesaria * CIEN) / MG_DEXTROSA_AL_50
     //selects the concentration of dextrose that the patient needs
     const seleccionarDextrosa = (dex) => {
-      if(dex > cantidadDextrosaAl5Porciento) {
-        dextrosaSeleccionada = "Dextrosa al 5%"
-        dextrosaSeleccionadaEnCc = cantidadDextrosaAl5Porciento
-      } else if(dex > cantidadDextrosaAl10Porciento) {
+      if(dex > cantidadDextrosaAl10Porciento) {
         dextrosaSeleccionada = "Dextrosa al 10%"
         dextrosaSeleccionadaEnCc = cantidadDextrosaAl10Porciento
       } else if(dex > cantidadDextrosaAl50Porciento) {
