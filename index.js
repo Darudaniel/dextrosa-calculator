@@ -25,14 +25,28 @@ let electrolitosMostrados
 let usoCateter
 //elements
 const botonCalcular =  document.getElementById('botonCalcular')
+let hipoglicemiaChecked 
 //app init
 const initializer = () => {
   //when you click on "calcular"
-  botonCalcular.onclick = () => {
+  botonCalcular.onclick = () => {    
     // get the data of patient
     peso = document.getElementById("peso").value
     diasDeNacido = document.getElementById("dias").value
+    hipoglicemiaChecked = document.querySelector('input[name="hipoglicemia"]:checked')
     // and make the calculations with this data
+
+    //METABOLIC FLOW CALUCLATION
+    const hypoglycemiaValidation = () => {
+      if(hipoglicemiaChecked) {
+        fmIdeal = 9
+      } else {
+        fmIdeal = 4.2
+      }
+    }
+    hypoglycemiaValidation()
+
+
 
     //LIQUIDS CALCULATIONS
     const cantidadDeLiquidos = (dias) => {
@@ -74,14 +88,12 @@ const initializer = () => {
       } else if(dex > cantidadDextrosaAl10Porciento) {
         dextrosaSeleccionada = "Dextrosa al 10%"
         dextrosaSeleccionadaEnCc = cantidadDextrosaAl10Porciento
-      } else if(dex > cantidadDextrosaAl30Porciento) {
-        dextrosaSeleccionada = "Dextrosa al 30%"
-        dextrosaSeleccionadaEnCc = cantidadDextrosaAl30Porciento
       } else if(dex > cantidadDextrosaAl50Porciento) {
         dextrosaSeleccionada = "Dextrosa al 50%"
         dextrosaSeleccionadaEnCc = cantidadDextrosaAl50Porciento
       } else {
-        console.log('no se pudo seleccionar una dextrosa')
+        dextrosaSeleccionada = "Error: No se pudo seleccionar una dextrosa"
+        dextrosaSeleccionadaEnCc = "Error: No se pudo seleccionar una dextrosa"
       }
     }
     seleccionarDextrosa(cantidadDeLiquidos(diasDeNacido))
@@ -131,7 +143,7 @@ const initializer = () => {
     const objetivo50 = document.getElementById('resultado50')
     objetivo50.innerHTML = `-Dextrosa al 50 en cc :---${cantidadDextrosaAl50Porciento.toFixed(1)} CC`
     const objetivoLiquidos = document.getElementById('liquidosNecesarios')
-    objetivoLiquidos.innerHTML = `-Administrar ${dextrosaSeleccionadaEnCc.toFixed(1)} CC de ${dextrosaSeleccionada}<br> y agregar ${resultadoResta.toFixed(1)} CC de solucion salina.`
+    objetivoLiquidos.innerHTML = `-Administrar ${dextrosaSeleccionadaEnCc.toFixed(1)} CC de ${dextrosaSeleccionada}<br> y agregar ${resultadoResta.toFixed(1)} CC de solucion salina. <br>En 24 horas.`
     const objetivoConcentracion = document.getElementById('concentracion')
     objetivoConcentracion.innerHTML = `(La solución tendra una concentracion de ${porcentajeDeDextrosa.toFixed(1)}% dextrosa)`
     const objetivoElectrolitos = document.getElementById('electrolitos')    

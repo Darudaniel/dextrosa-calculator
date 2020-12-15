@@ -53,6 +53,20 @@ main {
   font-size: 1.5rem;
 }
 
+.hipoglicemia-input {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  margin-bottom: 0;
+  width: 200px;
+  font-size: 1.5rem;
+}
+.hipoglicemia-input input {
+  width: 4rem;
+  height: 4rem;
+  margin: 10px;
+}
+
 .button-container {
   margin: 20px;
   margin-bottom: 0;
