@@ -123,9 +123,9 @@ const initializer = () => {
     //CATETER'S USE DETERMINATE    
     const validacionCateter = () => {
       if(porcentajeDeDextrosa > 12.5) {
-        usoCateter = "Debido a la concentracion debe utilizarse cateter central"
+        usoCateter = "Debido a la concentración debe utilizarse catéter central"
       } else {
-        usoCateter = "-No necesita cateter central"
+        usoCateter = "-No necesita catéter central"
       }
     }
     validacionCateter()
@@ -140,9 +140,9 @@ const initializer = () => {
     const objetivo50 = document.getElementById('resultado50')
     objetivo50.innerHTML = `-Dextrosa al 50 en cc :---${cantidadDextrosaAl50Porciento.toFixed(1)} CC`
     const objetivoLiquidos = document.getElementById('liquidosNecesarios')
-    objetivoLiquidos.innerHTML = `-Administrar ${dextrosaSeleccionadaEnCc.toFixed(1)} CC de ${dextrosaSeleccionada}<br> y agregar ${resultadoResta.toFixed(1)} CC de solucion salina. <br>En 24 horas.`
+    objetivoLiquidos.innerHTML = `-Administrar ${dextrosaSeleccionadaEnCc.toFixed(1)} CC de ${dextrosaSeleccionada}<br> y agregar ${resultadoResta.toFixed(1)} CC de solución salina. <br>En 24 horas.`
     const objetivoConcentracion = document.getElementById('concentracion')
-    objetivoConcentracion.innerHTML = `(La solución tendra una concentracion de ${porcentajeDeDextrosa.toFixed(1)}% dextrosa)`
+    objetivoConcentracion.innerHTML = `(La solución tendrá una concentración de ${porcentajeDeDextrosa.toFixed(1)}% dextrosa)`
     const objetivoElectrolitos = document.getElementById('electrolitos')    
     objetivoElectrolitos.innerHTML = electrolitosMostrados
     const objetivoCateter = document.getElementById('cateterCentral')
