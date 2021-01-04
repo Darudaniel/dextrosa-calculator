@@ -30,10 +30,10 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  min-height: 73vh;
   background-color: var(--darkest-grey);
   padding: 50px;
   color: var(--just-white);
-  height: auto;
 }
 
 .form {
