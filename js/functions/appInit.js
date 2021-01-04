@@ -25,7 +25,6 @@ let electrolitosMostrados
 let usoCateter
 //elements
 let hipoglicemiaChecked 
-
 // functions
 const cantidadDeLiquidos = (dias) => {
   switch(parseInt(dias)) {
@@ -112,23 +111,57 @@ function catheterValidation() {
     usoCateter = "-No necesita catéter central"
   }
 }
+
+function resultsTemplate() {
+  return (
+    `
+    <div class="resultados-container">
+        <h4>FORMULA</h4>
+        <ul class="resultados-list">
+          <li>
+            <label id="liquidosNecesarios">-Administrar ${dextrosaSeleccionadaEnCc.toFixed(1)} CC de ${dextrosaSeleccionada}<br> y agregar ${ccDiference.toFixed(1)} CC de solución salina. <br>En 24 horas.</label>
+          </li>      
+          <li>
+            <label id="electrolitos">${electrolitosMostrados}</label>
+          </li>
+          <li>
+            <label id="concentracion">(La solución tendrá una concentración de ${porcentajeDeDextrosa.toFixed(1)}% dextrosa)</label>
+          </li>      
+          <li>
+            <label id="cateterCentral">${usoCateter}</label>
+          </li>        
+        </ul>
+      </div>
+      <div class="title-container">
+        <h3>En caso de querer hacer los calculos manualmente estas son las cantidades de dextrosa en CC que se necesitan segun su concentracion</h3>
+      </div>
+      <div class="otras-dextrosas-container">
+        <h4>Otras dextrosas</h4>
+        <ul class="resultados-list">
+          <li>
+            <label id="resultado5">-Dextrosa al 5 en cc :---${cantidadDextrosaAl5Porciento.toFixed(1)} CC</label>
+          </li>        
+          <li>
+            <label id="resultado10">-Dextrosa al 10 en cc :---${cantidadDextrosaAl10Porciento.toFixed(1)} CC</label>
+          </li>
+          <li>
+            <label id="resultado30">-Dextrosa al 30 en cc :---${cantidadDextrosaAl30Porciento.toFixed(1)} CC</label>
+          </li>
+          <li>
+            <label id="resultado50">-Dextrosa al 50 en cc :---${cantidadDextrosaAl50Porciento.toFixed(1)} CC</label>
+          </li>      
+        </ul>      
+      </div>
+    `
+  )
+}
 function showResultsOnScreen() {
-  const objetivo5 = document.getElementById('resultado5')
-  objetivo5.innerHTML = `-Dextrosa al 5 en cc :---${cantidadDextrosaAl5Porciento.toFixed(1)} CC`
-  const objetivo10 = document.getElementById('resultado10')
-  objetivo10.innerHTML = `-Dextrosa al 10 en cc :---${cantidadDextrosaAl10Porciento.toFixed(1)} CC`
-  const objetivo30 = document.getElementById('resultado30')
-  objetivo30.innerHTML = `-Dextrosa al 30 en cc :---${cantidadDextrosaAl30Porciento.toFixed(1)} CC`
-  const objetivo50 = document.getElementById('resultado50')
-  objetivo50.innerHTML = `-Dextrosa al 50 en cc :---${cantidadDextrosaAl50Porciento.toFixed(1)} CC`
-  const objetivoLiquidos = document.getElementById('liquidosNecesarios')
-  objetivoLiquidos.innerHTML = `-Administrar ${dextrosaSeleccionadaEnCc.toFixed(1)} CC de ${dextrosaSeleccionada}<br> y agregar ${ccDiference.toFixed(1)} CC de solución salina. <br>En 24 horas.`
-  const objetivoConcentracion = document.getElementById('concentracion')
-  objetivoConcentracion.innerHTML = `(La solución tendrá una concentración de ${porcentajeDeDextrosa.toFixed(1)}% dextrosa)`
-  const objetivoElectrolitos = document.getElementById('electrolitos')    
-  objetivoElectrolitos.innerHTML = electrolitosMostrados
-  const objetivoCateter = document.getElementById('cateterCentral')
-  objetivoCateter.innerHTML = usoCateter
+  let $resultsContainer = document.getElementById('results-section')
+  $resultsContainer.innerHTML = ""
+  let HTMLString = resultsTemplate()
+  let html = document.implementation.createHTMLDocument()
+  html.body.innerHTML = HTMLString
+  $resultsContainer.append(html.body)
 }
 
 function appInit() {
