@@ -119,7 +119,7 @@ function resultsTemplate() {
         <h4>FORMULA</h4>
         <ul class="resultados-list">
           <li>
-            <label id="liquidosNecesarios">-Administrar ${dextrosaSeleccionadaEnCc.toFixed(1)} CC de ${dextrosaSeleccionada}<br> y agregar ${ccDiference.toFixed(1)} CC de solución salina. <br>En 24 horas.</label>
+            <label id="liquidosNecesarios">-Administrar ${dextrosaSeleccionadaEnCc.toFixed(1)} CC de ${dextrosaSeleccionada}<br> y agregar ${ccDiference.toFixed(1)} CC de agua destilada. <br>En 24 horas.</label>
           </li>      
           <li>
             <label id="electrolitos">${electrolitosMostrados}</label>
