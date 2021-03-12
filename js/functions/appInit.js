@@ -29,7 +29,7 @@ let hipoglicemiaChecked
 const cantidadDeLiquidos = (dias) => {
   switch(parseInt(dias)) {
     case 1:
-      return peso * 70
+      return peso * 60
       break
     case 2:
       return peso * 80
