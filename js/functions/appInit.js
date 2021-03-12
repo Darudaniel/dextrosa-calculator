@@ -29,7 +29,7 @@ let hipoglicemiaChecked
 const cantidadDeLiquidos = (dias) => {
   switch(parseInt(dias)) {
     case 1:
-      return peso * 60
+      return peso * 70
       break
     case 2:
       return peso * 80
@@ -58,7 +58,7 @@ function hypoglycemiaValidation() {
   if(hipoglicemiaChecked) {
     fmIdeal = 9
   } else {
-    fmIdeal = 4.2
+    fmIdeal = 4
   }
 }
 
